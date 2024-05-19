@@ -81,7 +81,7 @@ async function runToggle() {
         }
       }
       if (d.lastManual > Date.now()) {
-        log('runToggle: %s - still manual keep', id)
+        log('runToggle: %s - still manual keep until', id, new Date(d.lastManual))
         continue
       }
       log('runToggle: %s - max %o - current %o', id, conf.maxPrice, currentPrice.price)
@@ -117,4 +117,4 @@ await runRefresh()
 await runToggle()
 setInterval(runRefreshOuter, 60 * 60 * 1000)
 
-cron.schedule('*/15 * * * *', runToggle);
+cron.schedule('*/15 * * * *', runToggle)

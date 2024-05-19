@@ -2,4 +2,4 @@ devices:
   dehumidifier:
     tasmota: 192.168.178.131
     maxPrice: 8
-    manualKeep: 2
+    manualKeep: 3
