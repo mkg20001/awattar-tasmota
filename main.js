@@ -84,7 +84,6 @@ async function runToggle() {
       }
       if (d.lastManual > Date.now()) {
         log('runToggle: %s - still manual keep until', id, new Date(d.lastManual))
-        p.ack()
         continue
       }
       log('runToggle: %s - max %o - current %o', id, conf.maxPrice, currentPrice.price)
