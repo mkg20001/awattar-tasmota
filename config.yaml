@@ -3,3 +3,7 @@ devices:
     tasmota: 192.168.178.131
     maxPrice: 8
     manualKeep: 3
+  led:
+    tasmota: 192.168.178.132
+    maxPrice: 12
+    manualKeep: 0.5
