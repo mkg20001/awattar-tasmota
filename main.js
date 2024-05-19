@@ -89,10 +89,10 @@ async function runToggle() {
       log('runToggle: %s - max %o - current %o', id, conf.maxPrice, currentPrice.price)
       if (conf.maxPrice < currentPrice.price) {
         log('runToggle: %s - turn off', id)
-        log(await d.powerOff())
+        await d.powerOff()
       } else {
         log('runToggle: %s - turn on', id)
-        log(await d.powerOn())
+        await d.powerOn()
       }
     } catch (e) {
       console.error('runToggle: %s - FAILED %o', id, e)
