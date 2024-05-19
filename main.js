@@ -2,6 +2,7 @@ import yaml from 'js-yaml'
 import fs from 'fs/promises'
 import debug from 'debug'
 import { fetchPrice } from './watt.js'
+import cron from 'node-cron'
 
 const log = debug('awa')
 
@@ -92,7 +93,7 @@ async function runToggle() {
         log(await d.powerOn())
       }
     } catch (e) {
-      console.error('runToggle: %s - FAILED %s', id, e)
+      console.error('runToggle: %s - FAILED %o', id, e)
     }
   }
 }
@@ -102,7 +103,7 @@ async function runRefresh() {
   try {
     marketdata = await fetchPrice()
   } catch (e) {
-
+    console.error('runRefresh: FAILED %o', e)
   }
 }
 
@@ -115,4 +116,5 @@ async function runRefreshOuter() {
 await runRefresh()
 await runToggle()
 setInterval(runRefreshOuter, 60 * 60 * 1000)
-setInterval(runToggle, 15 * 60 * 1000)
+
+cron.schedule('*/15 * * * *', runToggle);

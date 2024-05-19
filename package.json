@@ -2,6 +2,7 @@
   "type": "module",
   "dependencies": {
     "debug": "^4.3.4",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "node-cron": "^3.0.3"
   }
 }
