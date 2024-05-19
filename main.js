@@ -22,14 +22,16 @@ function Tasmota(ip) {
 
   let lastState
 
+  function applyPower({ POWER }) {
+    lastState = POWER === 'ON'
+  }
+
   return {
-    powerOn() {
-      lastState = true
-      return req('Power On')
+    async powerOn() {
+      return applyPower(req('Power On'))
     },
-    powerOff() {
-      lastState = false
-      return req('Power off')
+    async powerOff() {
+      return applyPower(req('Power off'))
     },
     weDidInit(i) {
       if (lastState === undefined) {
