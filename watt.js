@@ -11,11 +11,13 @@ export async function fetchPrice() {
       start: new Date(start_timestamp),
       end: new Date(end_timestamp),
       price: marketprice * 100 / 1000,
-      unit: 'ct/kwh'
+      unit: 'ct/kwh',
+      current: function() {
+        const now = Date.now()
+        return this.start <= now && this.end >= now
+      }
     })
   }
 
   return out
 }
-
-console.log(await fetchPrice())
