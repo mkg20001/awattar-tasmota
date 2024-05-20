@@ -110,7 +110,7 @@ async function runRefresh() {
 }
 
 async function runRefreshOuter() {
-  if (!marketdata || !(new Date().getHours() % 8)) {
+  if (!marketdata || !(new Date().getHours() % 6)) {
     runRefresh()
   }
 }
