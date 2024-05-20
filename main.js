@@ -28,10 +28,10 @@ function Tasmota(ip) {
 
   return {
     async powerOn() {
-      return applyPower(req('Power On'))
+      return applyPower(await req('Power On'))
     },
     async powerOff() {
-      return applyPower(req('Power off'))
+      return applyPower(await req('Power off'))
     },
     weDidInit(i) {
       if (lastState === undefined) {
