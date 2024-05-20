@@ -78,7 +78,7 @@ async function runToggle() {
       if (!p.weDid) {
         if (conf.manualKeep) {
           log('runToggle: %s - device touched, but manual keep - keeping', id)
-          d.lastManual = Date.now() + (60 * 60 * 1000 * conf.manualKeep)
+          d.lastManual = Date.now() + (60 * 60 * 1000 * conf.manualKeep) - (60 * 5 * 1000)
           p.ack()
         }
       }
